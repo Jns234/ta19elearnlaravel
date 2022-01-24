@@ -8,14 +8,15 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 use Symfony\Component\DomCrawler\Crawler;
 
-class XkcdScraper extends Command
+
+class SrGrafoScraper extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'comic:steal';
+    protected $signature = 'steal:SrGrafo';
 
     /**
      * The console command description.
@@ -42,16 +43,21 @@ class XkcdScraper extends Command
     public function handle()
     {
         $guzzle = new Client();
-        for($i = 2569; $i>2559; $i--) {
-            $body = $this->getOrCache("https://xkcd.com/$i/", $guzzle);
+        for($i =434; $i>424; $i--) {
+            //$response = $guzzle->get("https://deathbulge.com/comics/$i/", $guzzle);
+            $body = $this->getOrCache("https://deathbulge.com/comics/$i", $guzzle);
             //var_dump($body);
+
             $crawler = new Crawler($body);
-            $imgEl = $crawler->filter('#comic>img');
-            var_dump([
+
+                $imgEl = $crawler->filter('img')->eq(5);
+                var_dump($imgEl->attr('src'));
+                var_dump([
                 'img' => $imgEl->attr('src'),
                 'title' => $imgEl->attr('alt'),
                 'text' => $imgEl->attr('title')
             ]);
+
             //sleep(1);
         }
     }

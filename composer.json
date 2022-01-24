@@ -11,7 +11,9 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "shahvirag/laravel-ui-bootstrap": "^0.0.6"
+        "shahvirag/laravel-ui-bootstrap": "^0.0.6",
+        "symfony/dom-crawler": "^6.0",
+        "symfony/mailer": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",
